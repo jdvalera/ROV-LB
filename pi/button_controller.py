@@ -13,8 +13,8 @@ DESCEND_PIN = 24
 
 
 def rotate_left(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('255', register=registers['RIGHT_THRUSTER'])
             ard.send('-255', register=registers['LEFT_THRUSTER'])
         else:
@@ -26,8 +26,8 @@ def rotate_left(channel):
 
 
 def rotate_right(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('-255', register=registers['RIGHT_THRUSTER'])
             ard.send('255', register=registers['LEFT_THRUSTER'])
         else:
@@ -39,8 +39,8 @@ def rotate_right(channel):
 
 
 def move_forward(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('255', register=registers['RIGHT_THRUSTER'])
             ard.send('255', register=registers['LEFT_THRUSTER'])
         else:
@@ -52,8 +52,8 @@ def move_forward(channel):
 
 
 def move_reverse(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('-255', register=registers['RIGHT_THRUSTER'])
             ard.send('-255', register=registers['LEFT_THRUSTER'])
         else:
@@ -65,8 +65,8 @@ def move_reverse(channel):
 
 
 def descend(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('-255', register=registers['ELEVATOR_THRUSTER'])
         else:
             ard.send('-10', register=registers['ELEVATOR_THRUSTER'])
@@ -75,8 +75,8 @@ def descend(channel):
 
 
 def ascend(channel):
-    while GPIO.input(channel) is False:
-        if GPIO.input(SPEED_PIN) is False:
+    while GPIO.input(channel) == 0:
+        if GPIO.input(SPEED_PIN) == 0:
             ard.send('255', register=registers['ELEVATOR_THRUSTER'])
         else:
             ard.send('10', register=registers['ELEVATOR_THRUSTER'])
